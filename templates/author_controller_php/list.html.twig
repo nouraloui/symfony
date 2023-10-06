@@ -25,21 +25,17 @@
 </table>
 {% endif %}
 
-
-{% if not authors or authors is empty %}
+{% if not tabAuthors or tabAuthors is empty %}
     <p>Aucun auteur trouvé.</p>
 {% else %}
     <ul>
-        {% for i in tabAuthors %}
+        {% for author in tabAuthors %}
             <li>
-                <a href="{{ path('show_author', {name: author.username}) }}">Details</a> {{ author.username|upper }}
+                <a href="{{ path('show_author', {name: author.id}) }}">Details</a> {{ author.id|upper }}
             </li>
         {% endfor %}
     </ul>
 {% endif %}
-
-
-
 <h3>Nb_Total_Authors: {{ tabAuthors|length }}</h3>
 <h3>Nb_Total_Books: {{ sum }}</h3>
 <img src="{{ asset('imgs/symfonylive.jpg') }}" alt="symfonylive" width="100px" height="100px">

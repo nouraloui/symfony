@@ -78,8 +78,15 @@ class AuthorController extends AbstractController
     {
         $author= $repository->find($id);
         $em = $managerRegistry->getManager();
+        if($author->getNbBooks()==0){
         $em->remove($author);
-        $em->flush();
-        return $this->redirectToRoute("authors");
+        $em->flush();}
+        else{
+            return  new Response("error!");
+        }
+
+       // return $this->redirectToRoute("authors");
+        return  new Response("ok!");
+
     }
 }
